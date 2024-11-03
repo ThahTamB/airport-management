@@ -1,0 +1,279 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="AirportManagerModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Account">
+    <Key>
+      <PropertyRef Name="EmployeeID" />
+    </Key>
+    <Property Name="EmployeeID" Type="Int32" Nullable="false" />
+    <Property Name="Username" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="AccessLevel" Type="Boolean" />
+    <NavigationProperty Name="Employee" Relationship="Self.FK__Account__Employe__398D8EEE" FromRole="Accounts" ToRole="Employees" />
+  </EntityType>
+  <EntityType Name="Bill_Detail">
+    <Key>
+      <PropertyRef Name="BillID" />
+    </Key>
+    <Property Name="BillID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CustomerID" Type="Int32" Nullable="false" />
+    <Property Name="FlightID" Type="Int32" Nullable="false" />
+    <Property Name="EmployeeID" Type="Int32" Nullable="false" />
+    <Property Name="SeatNumber" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="SeatClass" Type="Boolean" />
+    <Property Name="BookingState" Type="Int32" />
+    <Property Name="TotalPrice" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="BookingDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Customer" Relationship="Self.FK__Bill_Deta__Custo__4316F928" FromRole="Bill_Detail" ToRole="Customers" />
+    <NavigationProperty Name="Flight" Relationship="Self.FK__Bill_Deta__Fligh__440B1D61" FromRole="Bill_Detail" ToRole="Flights" />
+    <NavigationProperty Name="Employee" Relationship="Self.FK_Bill_Detail_Employees" FromRole="Bill_Detail" ToRole="Employees" />
+  </EntityType>
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="CustomerID" />
+    </Key>
+    <Property Name="CustomerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Nationality" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Sex" Type="Boolean" />
+    <Property Name="DateOfBirth" Type="DateTime" Precision="3" />
+    <Property Name="NationalID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="TeleNumber" Type="String" MaxLength="18" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Bill_Detail" Relationship="Self.FK__Bill_Deta__Custo__4316F928" FromRole="Customers" ToRole="Bill_Detail" />
+  </EntityType>
+  <EntityType Name="Employee">
+    <Key>
+      <PropertyRef Name="EmployeeID" />
+    </Key>
+    <Property Name="EmployeeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Nationality" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Sex" Type="Boolean" />
+    <Property Name="DateOfBirth" Type="DateTime" Precision="3" />
+    <Property Name="Email" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="NationID" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="TeleNumber" Type="String" MaxLength="18" FixedLength="false" Unicode="true" />
+    <Property Name="Position" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Account" Relationship="Self.FK__Account__Employe__398D8EEE" FromRole="Employees" ToRole="Accounts" />
+    <NavigationProperty Name="Bill_Detail" Relationship="Self.FK_Bill_Detail_Employees" FromRole="Employees" ToRole="Bill_Detail" />
+    <NavigationProperty Name="Jobs" Relationship="Self.FK__Job__EmployeeID__46E78A0C" FromRole="Employees" ToRole="Jobs" />
+  </EntityType>
+  <EntityType Name="Flight">
+    <Key>
+      <PropertyRef Name="FlightID" />
+    </Key>
+    <Property Name="FlightID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PlaneID" Type="Int32" Nullable="false" />
+    <Property Name="Departure" Type="Int32" Nullable="false" />
+    <Property Name="DateOfDeparture" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Destination" Type="Int32" Nullable="false" />
+    <Property Name="Airline" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Bill_Detail" Relationship="Self.FK__Bill_Deta__Fligh__440B1D61" FromRole="Flights" ToRole="Bill_Detail" />
+    <NavigationProperty Name="Plane" Relationship="Self.FK__Flight__Airline__403A8C7D" FromRole="Flights" ToRole="Planes" />
+    <NavigationProperty Name="Jobs" Relationship="Self.FK__Job__FlightID__47DBAE45" FromRole="Flights" ToRole="Jobs" />
+    <NavigationProperty Name="Location" Relationship="Self.FK_Flights_Locations" FromRole="Flights" ToRole="Locations" />
+    <NavigationProperty Name="Location1" Relationship="Self.FK_Flights_Locations1" FromRole="Flights" ToRole="Locations" />
+    <Property Name="Price" Type="Decimal" Nullable="false" Precision="12" Scale="0" />
+  </EntityType>
+  <EntityType Name="Job">
+    <Key>
+      <PropertyRef Name="JobID" />
+    </Key>
+    <Property Name="JobID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AssignedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="EmployeeID" Type="Int32" Nullable="false" />
+    <Property Name="FlightID" Type="Int32" Nullable="false" />
+    <Property Name="JobDescription" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="JobState" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Employee" Relationship="Self.FK__Job__EmployeeID__46E78A0C" FromRole="Jobs" ToRole="Employees" />
+    <NavigationProperty Name="Flight" Relationship="Self.FK__Job__FlightID__47DBAE45" FromRole="Jobs" ToRole="Flights" />
+  </EntityType>
+  <EntityType Name="Location">
+    <Key>
+      <PropertyRef Name="LocationID" />
+    </Key>
+    <Property Name="LocationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LocationName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Flights" Relationship="Self.FK_Flights_Locations" FromRole="Locations" ToRole="Flights" />
+    <NavigationProperty Name="Flights1" Relationship="Self.FK_Flights_Locations1" FromRole="Locations" ToRole="Flights" />
+  </EntityType>
+  <EntityType Name="Plane">
+    <Key>
+      <PropertyRef Name="PlaneID" />
+    </Key>
+    <Property Name="PlaneID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Model" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Registration" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="TotalSeat" Type="Int32" />
+    <Property Name="Manufacturer" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="State" Type="Int32" />
+    <NavigationProperty Name="Flights" Relationship="Self.FK__Flight__Airline__403A8C7D" FromRole="Planes" ToRole="Flights" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <Association Name="FK__Account__Employe__398D8EEE">
+    <End Role="Employees" Type="Self.Employee" Multiplicity="1" />
+    <End Role="Accounts" Type="Self.Account" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Employees">
+        <PropertyRef Name="EmployeeID" />
+      </Principal>
+      <Dependent Role="Accounts">
+        <PropertyRef Name="EmployeeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Bill_Deta__Custo__4316F928">
+    <End Role="Customers" Type="Self.Customer" Multiplicity="1" />
+    <End Role="Bill_Detail" Type="Self.Bill_Detail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customers">
+        <PropertyRef Name="CustomerID" />
+      </Principal>
+      <Dependent Role="Bill_Detail">
+        <PropertyRef Name="CustomerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Bill_Deta__Fligh__440B1D61">
+    <End Role="Flights" Type="Self.Flight" Multiplicity="1" />
+    <End Role="Bill_Detail" Type="Self.Bill_Detail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Flights">
+        <PropertyRef Name="FlightID" />
+      </Principal>
+      <Dependent Role="Bill_Detail">
+        <PropertyRef Name="FlightID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Bill_Detail_Employees">
+    <End Role="Employees" Type="Self.Employee" Multiplicity="1" />
+    <End Role="Bill_Detail" Type="Self.Bill_Detail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employees">
+        <PropertyRef Name="EmployeeID" />
+      </Principal>
+      <Dependent Role="Bill_Detail">
+        <PropertyRef Name="EmployeeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Job__EmployeeID__46E78A0C">
+    <End Role="Employees" Type="Self.Employee" Multiplicity="1" />
+    <End Role="Jobs" Type="Self.Job" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employees">
+        <PropertyRef Name="EmployeeID" />
+      </Principal>
+      <Dependent Role="Jobs">
+        <PropertyRef Name="EmployeeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Flight__Airline__403A8C7D">
+    <End Role="Planes" Type="Self.Plane" Multiplicity="1" />
+    <End Role="Flights" Type="Self.Flight" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Planes">
+        <PropertyRef Name="PlaneID" />
+      </Principal>
+      <Dependent Role="Flights">
+        <PropertyRef Name="PlaneID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Job__FlightID__47DBAE45">
+    <End Role="Flights" Type="Self.Flight" Multiplicity="1" />
+    <End Role="Jobs" Type="Self.Job" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Flights">
+        <PropertyRef Name="FlightID" />
+      </Principal>
+      <Dependent Role="Jobs">
+        <PropertyRef Name="FlightID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Flights_Locations">
+    <End Role="Locations" Type="Self.Location" Multiplicity="1" />
+    <End Role="Flights" Type="Self.Flight" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Locations">
+        <PropertyRef Name="LocationID" />
+      </Principal>
+      <Dependent Role="Flights">
+        <PropertyRef Name="Departure" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Flights_Locations1">
+    <End Role="Locations" Type="Self.Location" Multiplicity="1" />
+    <End Role="Flights" Type="Self.Flight" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Locations">
+        <PropertyRef Name="LocationID" />
+      </Principal>
+      <Dependent Role="Flights">
+        <PropertyRef Name="Destination" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="AirportManager" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Accounts" EntityType="Self.Account" />
+    <EntitySet Name="Bill_Detail" EntityType="Self.Bill_Detail" />
+    <EntitySet Name="Customers" EntityType="Self.Customer" />
+    <EntitySet Name="Employees" EntityType="Self.Employee" />
+    <EntitySet Name="Flights" EntityType="Self.Flight" />
+    <EntitySet Name="Jobs" EntityType="Self.Job" />
+    <EntitySet Name="Locations" EntityType="Self.Location" />
+    <EntitySet Name="Planes" EntityType="Self.Plane" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <AssociationSet Name="FK__Account__Employe__398D8EEE" Association="Self.FK__Account__Employe__398D8EEE">
+      <End Role="Employees" EntitySet="Employees" />
+      <End Role="Accounts" EntitySet="Accounts" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Bill_Deta__Custo__4316F928" Association="Self.FK__Bill_Deta__Custo__4316F928">
+      <End Role="Customers" EntitySet="Customers" />
+      <End Role="Bill_Detail" EntitySet="Bill_Detail" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Bill_Deta__Fligh__440B1D61" Association="Self.FK__Bill_Deta__Fligh__440B1D61">
+      <End Role="Flights" EntitySet="Flights" />
+      <End Role="Bill_Detail" EntitySet="Bill_Detail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Bill_Detail_Employees" Association="Self.FK_Bill_Detail_Employees">
+      <End Role="Employees" EntitySet="Employees" />
+      <End Role="Bill_Detail" EntitySet="Bill_Detail" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Job__EmployeeID__46E78A0C" Association="Self.FK__Job__EmployeeID__46E78A0C">
+      <End Role="Employees" EntitySet="Employees" />
+      <End Role="Jobs" EntitySet="Jobs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Flight__Airline__403A8C7D" Association="Self.FK__Flight__Airline__403A8C7D">
+      <End Role="Planes" EntitySet="Planes" />
+      <End Role="Flights" EntitySet="Flights" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Job__FlightID__47DBAE45" Association="Self.FK__Job__FlightID__47DBAE45">
+      <End Role="Flights" EntitySet="Flights" />
+      <End Role="Jobs" EntitySet="Jobs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Flights_Locations" Association="Self.FK_Flights_Locations">
+      <End Role="Locations" EntitySet="Locations" />
+      <End Role="Flights" EntitySet="Flights" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Flights_Locations1" Association="Self.FK_Flights_Locations1">
+      <End Role="Locations" EntitySet="Locations" />
+      <End Role="Flights" EntitySet="Flights" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

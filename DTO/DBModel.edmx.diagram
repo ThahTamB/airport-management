@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="e4a6f347b49649a9adb89bcd9d2e70b1" Name="Diagram1">
+        <EntityTypeShape EntityType="AirportManagerModel.Account" Width="1.5" PointX="5.5" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="AirportManagerModel.Bill_Detail" Width="1.5" PointX="5.25" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AirportManagerModel.Customer" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AirportManagerModel.Employee" Width="1.5" PointX="3" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="AirportManagerModel.Flight" Width="1.5" PointX="3" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AirportManagerModel.Job" Width="1.5" PointX="8.25" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="AirportManagerModel.Location" Width="1.5" PointX="0.75" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="AirportManagerModel.Plane" Width="1.5" PointX="0.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="AirportManagerModel.sysdiagram" Width="1.5" PointX="7.75" PointY="8.625" IsExpanded="true" />
+        <AssociationConnector Association="AirportManagerModel.FK__Account__Employe__398D8EEE" ManuallyRouted="false" />
+        <AssociationConnector Association="AirportManagerModel.FK__Bill_Deta__Custo__4316F928" ManuallyRouted="false" />
+        <AssociationConnector Association="AirportManagerModel.FK__Bill_Deta__Fligh__440B1D61" ManuallyRouted="false" />
+        <AssociationConnector Association="AirportManagerModel.FK_Bill_Detail_Employees" ManuallyRouted="false" />
+        <AssociationConnector Association="AirportManagerModel.FK__Job__EmployeeID__46E78A0C" ManuallyRouted="false" />
+        <AssociationConnector Association="AirportManagerModel.FK__Flight__Airline__403A8C7D" ManuallyRouted="false" />
+        <AssociationConnector Association="AirportManagerModel.FK__Job__FlightID__47DBAE45" ManuallyRouted="false" />
+        <AssociationConnector Association="AirportManagerModel.FK_Flights_Locations" ManuallyRouted="false" />
+        <AssociationConnector Association="AirportManagerModel.FK_Flights_Locations1" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

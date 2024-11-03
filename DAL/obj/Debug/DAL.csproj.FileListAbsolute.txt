@@ -1,0 +1,15 @@
+C:\Users\bthta\OneDrive\Desktop\Airport\Airport_Management\Airport_Manager\DAL\bin\Debug\DAL.dll.config
+C:\Users\bthta\OneDrive\Desktop\Airport\Airport_Management\Airport_Manager\DAL\bin\Debug\DAL.dll
+C:\Users\bthta\OneDrive\Desktop\Airport\Airport_Management\Airport_Manager\DAL\bin\Debug\DAL.pdb
+C:\Users\bthta\OneDrive\Desktop\Airport\Airport_Management\Airport_Manager\DAL\bin\Debug\DTO.dll
+C:\Users\bthta\OneDrive\Desktop\Airport\Airport_Management\Airport_Manager\DAL\bin\Debug\EntityFramework.dll
+C:\Users\bthta\OneDrive\Desktop\Airport\Airport_Management\Airport_Manager\DAL\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\bthta\OneDrive\Desktop\Airport\Airport_Management\Airport_Manager\DAL\bin\Debug\DTO.pdb
+C:\Users\bthta\OneDrive\Desktop\Airport\Airport_Management\Airport_Manager\DAL\bin\Debug\DTO.dll.config
+C:\Users\bthta\OneDrive\Desktop\Airport\Airport_Management\Airport_Manager\DAL\bin\Debug\EntityFramework.xml
+C:\Users\bthta\OneDrive\Desktop\Airport\Airport_Management\Airport_Manager\DAL\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\bthta\OneDrive\Desktop\Airport\Airport_Management\Airport_Manager\DAL\obj\Debug\DAL.csproj.AssemblyReference.cache
+C:\Users\bthta\OneDrive\Desktop\Airport\Airport_Management\Airport_Manager\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
+C:\Users\bthta\OneDrive\Desktop\Airport\Airport_Management\Airport_Manager\DAL\obj\Debug\DAL.csproj.CopyComplete
+C:\Users\bthta\OneDrive\Desktop\Airport\Airport_Management\Airport_Manager\DAL\obj\Debug\DAL.dll
+C:\Users\bthta\OneDrive\Desktop\Airport\Airport_Management\Airport_Manager\DAL\obj\Debug\DAL.pdb
